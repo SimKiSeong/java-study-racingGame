@@ -6,16 +6,17 @@ import com.econo.racingGame.view.ResultView;
 
 import java.util.Random;
 
-public class RacingGame {
+public class GameController {
 
     private final static int MOVE_BOUNDARY = 4;
     private final static int GO = 1;
     private final static int STOP = 0;
 
-    public Car[] makeCars(int carNumber,int tryNumber){
-        Car[] cars = new Car[carNumber];
+    public Car[] makeCars(String[] names,int tryNumber){
+        Car[] cars = new Car[names.length];
         for(int i = 0;i<cars.length;i++){
             cars[i] = new Car();
+            cars[i].setDriver(names[i]);
             cars[i].setMoveDistance(returnDistance(tryNumber));
         }
         return cars;
@@ -36,10 +37,6 @@ public class RacingGame {
             return GO;
         }
         return STOP;
-    }
-
-    public void playGame(){
-        ResultView.printResult(makeCars(InputView.carNumber(),InputView.tryNumber()));
     }
 
 }
