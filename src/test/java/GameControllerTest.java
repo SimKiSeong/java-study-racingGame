@@ -16,21 +16,23 @@ public class GameControllerTest {
         gameController = new GameController();
         testString = new String[]{"기성", "기성", "기성"};
         testTryNumber = 5;
+        gameController.makeCars(testString.length);
     }
 
     @Test
     public void checkRandomNumberTest() {
         assertEquals(1, gameController.checkRandomNumber(4));
+
     }
 
     @Test
     public void returnDistance() {
-        assertEquals(true, isDistanceEquals(testTryNumber, gameController.returnDistance(testTryNumber)));
+        assertEquals(true, isDistanceEquals(testTryNumber, gameController.distance(testTryNumber)));
     }
 
     @Test
     public void makeCarsTest() {
-        assertEquals(true, isCarnumberEquals(testString.length, gameController.makeCars(testString, testTryNumber)));
+        assertEquals(true, isCarNumberEquals(testString.length, gameController.settingCars(testString, testTryNumber)));
     }
 
     public boolean isDistanceEquals(int tryNumber, int distance) {
@@ -40,7 +42,7 @@ public class GameControllerTest {
         return false;
     }
 
-    public boolean isCarnumberEquals(int carNumber, Car[] cars) {
+    public boolean isCarNumberEquals(int carNumber, Car[] cars) {
         if (cars.length == carNumber) {
             return true;
         }

@@ -6,7 +6,6 @@ import org.junit.Test;
 import java.util.Arrays;
 
 import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.assertTrue;
 
 public class RankControllerTest {
 
@@ -27,24 +26,18 @@ public class RankControllerTest {
 
     @Test
     public void findWinnerTest() {
-        assertEquals("기성2", rankController.findWinner(4,cars[1]));
-    }
+        assertEquals("기성2", rankController.checkWinner(4, cars[1]));
 
+    }
 
     @Test
     public void returnWinnerTest() {
-        assertEquals(true,Arrays.equals(new String[]{"기성1"}, rankController.returnWinner(cars)));
+        assertEquals(true, Arrays.equals(new String[]{"기성1"}, rankController.winner(cars)));
     }
 
     @Test
     public void findFarDistanceTest() {
-        assertEquals(5, rankController.findFarDistance(cars));
+        assertEquals(5, rankController.farDistance(cars));
     }
-
-    @Test
-    public void bigIntegerTest() {
-        assertEquals(1, rankController.bigInteger(1,0));
-    }
-
 
 }

@@ -20,7 +20,7 @@ public class InputView {
         return tryNumber;
     }
 
-    public static String[] divideDriver(String inputName){
+    public static String[] divideDriver(String inputName) {
         return inputName.split(SPLIT_MARK);
     }
 

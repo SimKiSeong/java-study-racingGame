@@ -4,20 +4,21 @@ import com.econo.racingGame.model.Car;
 
 public class ResultView {
 
-    private static final char BAR = '-';
+    private static final String BAR = "-";
     private static final String RESULT_FORM = " : ";
     private static final String WINNER_FORM = ", ";
+    private static final String WINNER_MENT = "가 최종 우승했습니다.";
 
     public static void printResult(Car[] cars) {
-        for (int i = 0; i < cars.length; i++) {
-            System.out.println(makeResultString(cars[i]));
+        for (int i = 0; i<cars.length;i++) {
+            System.out.println(resultString(cars[i]));
         }
     }
 
-    public static String makeResultString(Car car) {
+    public static String resultString(Car car) {
         String resultString = car.getDriver() + RESULT_FORM;
         for (int i = 0; i < car.getMoveDistance(); i++) {
-            resultString = resultString + BAR;
+            resultString = resultString.concat(BAR);
         }
         return resultString;
     }
@@ -25,9 +26,9 @@ public class ResultView {
     private void printWinner(String[] winner) {
         System.out.print(winner[0]);
         for (int i = 1; i < winner.length; i++) {
-            System.out.print(WINNER_FORM+winner[i]);
+            System.out.print(WINNER_FORM + winner[i]);
         }
-        System.out.println("가 최종 우승했습니다.");
+        System.out.println(WINNER_MENT);
     }
 
 }
