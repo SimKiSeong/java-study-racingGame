@@ -2,9 +2,15 @@ package com.econo.racingGame.model;
 
 public class Car {
 
-    private int moveDistance;
+    private final int ONCE_DISTANCE = 1;
 
+    private int moveDistance;
     private String driver;
+
+    public Car(){
+        this.driver = "";
+        this.moveDistance = 0;
+    }
 
     public String getDriver() {
         return driver;
@@ -20,6 +26,12 @@ public class Car {
 
     public void setMoveDistance(int moveDistance) {
         this.moveDistance = moveDistance;
+    }
+
+    public void accelerate(boolean goFoward) {
+        if(goFoward) {
+            moveDistance = moveDistance + ONCE_DISTANCE;
+        }
     }
 
 }

@@ -3,48 +3,50 @@ package com.econo.racingGame.controller;
 import com.econo.racingGame.model.Car;
 
 import java.util.Random;
+import java.util.stream.Stream;
 
 public class GameController {
 
     private final static int MOVE_BOUNDARY = 4;
-    private final static int RANDOM_BOUNDART = 10;
-    private final static int GO = 1;
-    private final static int STOP = 0;
+    private final static int RANDOM_BOUNDARY = 10;
     private Car[] cars;
 
-    public void makeCars(int carNumbers) {
+    public void makeCars(int carNumbers){
         cars = new Car[carNumbers];
-        for (int i = 0;i<carNumbers;i++) {
+        for(int i = 0; i<carNumbers;i++){
             cars[i] = new Car();
         }
     }
 
-    public Car[] settingCars(String[] names, int tryNumber) {
+    public void settingCars(String[] names) {
+        makeCars(names.length);
         for (int i = 0; i < cars.length; i++) {
             cars[i].setDriver(names[i]);
-            cars[i].setMoveDistance(distance(tryNumber));
         }
-        return cars;
     }
 
-    public int randomNumber() {
+    public int makeRandomNumber() {
         Random random = new Random();
-        return random.nextInt(RANDOM_BOUNDART);
+        return random.nextInt(RANDOM_BOUNDARY);
     }
 
-    public int distance(int tryNumber) {
-        int distance = 0;
-        for (int i = 0; i < tryNumber; i++) {
-            distance = distance + checkRandomNumber(randomNumber());
-        }
-        return distance;
-    }
-
-    public int checkRandomNumber(int randomNumber) {
+    public boolean isAccerate(int randomNumber) {
         if (randomNumber >= MOVE_BOUNDARY) {
-            return GO;
+            return true;
         }
-        return STOP;
+        return false;
+    }
+
+    public void accerateCar(int turn, int tryNumber){
+        for(int i = 0 ;i<tryNumber;i++){
+            cars[turn].accelerate(isAccerate(makeRandomNumber()));
+        }
+    }
+
+    public void accerateCars(int tryNumber){
+        for(int i = 0;i<cars.length;i++){
+            accerateCar(i,tryNumber);
+        }
     }
 
 }

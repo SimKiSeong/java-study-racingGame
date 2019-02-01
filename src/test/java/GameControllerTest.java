@@ -21,18 +21,8 @@ public class GameControllerTest {
 
     @Test
     public void checkRandomNumberTest() {
-        assertEquals(1, gameController.checkRandomNumber(4));
+        assertEquals(true, gameController.isAccerate(4));
 
-    }
-
-    @Test
-    public void returnDistance() {
-        assertEquals(true, isDistanceEquals(testTryNumber, gameController.distance(testTryNumber)));
-    }
-
-    @Test
-    public void makeCarsTest() {
-        assertEquals(true, isCarNumberEquals(testString.length, gameController.settingCars(testString, testTryNumber)));
     }
 
     public boolean isDistanceEquals(int tryNumber, int distance) {
