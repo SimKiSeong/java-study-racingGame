@@ -9,14 +9,14 @@ public class RankController {
 
     private final String NONE = "";
 
-    private String checkWinner(int farDistance, Car car) {
+    public String checkWinner(int farDistance, Car car) {
         if (farDistance == car.getMoveDistance()) {
             return car.getDriver();
         }
         return NONE;
     }
 
-    public String[] winner(List<Car> cars) {
+    public String[] findWinner(List<Car> cars) {
         String winner = new String();
         int farDistance = farDistance(cars);
         for (Car car : cars) {

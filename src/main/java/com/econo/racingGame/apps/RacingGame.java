@@ -13,7 +13,7 @@ public class RacingGame {
         gameController.makeCars(InputView.driversName());
         gameController.accerateCars(InputView.tryNumber());
         ResultView.printResult(gameController.getCars());
-        ResultView.printWinner(rankController.winner(gameController.getCars()));
+        ResultView.printWinner(rankController.findWinner(gameController.getCars()));
     }
 
     public static void main(String[] args) {

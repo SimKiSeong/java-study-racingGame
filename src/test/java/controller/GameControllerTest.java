@@ -1,4 +1,5 @@
-import com.econo.racingGame.model.Car;
+package controller;
+
 import com.econo.racingGame.controller.GameController;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,34 +10,23 @@ public class GameControllerTest {
 
     private GameController gameController;
     private String testString[];
-    private int testTryNumber;
 
     @Before
     public void setUp() throws Exception {
         gameController = new GameController();
         testString = new String[]{"기성", "기성", "기성"};
-        testTryNumber = 5;
-        gameController.makeCars(testString.length);
+        gameController.makeCars(testString);
     }
 
     @Test
-    public void checkRandomNumberTest() {
+    public void isAccerateTest() {
         assertEquals(true, gameController.isAccerate(4));
-
     }
 
-    public boolean isDistanceEquals(int tryNumber, int distance) {
-        if (tryNumber >= distance) {
-            return true;
-        }
-        return false;
-    }
-
-    public boolean isCarNumberEquals(int carNumber, Car[] cars) {
-        if (cars.length == carNumber) {
-            return true;
-        }
-        return false;
+    @Test
+    public void accerateCarTest() {
+        gameController.accerateCar(gameController.getCars().get(0),4);
+        assertEquals(0,gameController.getCars().get(0).getMoveDistance() ,4);
     }
 
 }

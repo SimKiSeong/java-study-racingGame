@@ -12,6 +12,11 @@ public class Car {
         this.moveDistance = 0;
     }
 
+    public Car(String driver,int moveDistance) {
+        this.driver = driver;
+        this.moveDistance = moveDistance;
+    }
+
     public String getDriver() {
         return driver;
     }
