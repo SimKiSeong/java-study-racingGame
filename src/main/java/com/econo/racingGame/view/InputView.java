@@ -1,16 +1,16 @@
 package com.econo.racingGame.view;
 
+import com.econo.racingGame.utils.StringGenerator;
+
 import java.util.Scanner;
 
 public class InputView {
 
-    private static final String SPLIT_MARK = ",";
-
-    public static String[] carNumber() {
+    public static String[] driversName() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("경주할 자동차 이름을 입력하세요.");
         String inputName = scanner.next();
-        return divideDriver(inputName);
+        return StringGenerator.divideComma(inputName);
     }
 
     public static int tryNumber() {
@@ -20,8 +20,5 @@ public class InputView {
         return tryNumber;
     }
 
-    public static String[] divideDriver(String inputName) {
-        return inputName.split(SPLIT_MARK);
-    }
 
 }

@@ -1,33 +1,25 @@
 package com.econo.racingGame.controller;
 
 import com.econo.racingGame.model.Car;
+import com.econo.racingGame.utils.RandomGenerator;
 
-import java.util.Random;
-import java.util.stream.Stream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameController {
 
     private final static int MOVE_BOUNDARY = 4;
     private final static int RANDOM_BOUNDARY = 10;
-    private Car[] cars;
+    private List<Car> cars = new ArrayList<>();
 
-    public void makeCars(int carNumbers){
-        cars = new Car[carNumbers];
-        for(int i = 0; i<carNumbers;i++){
-            cars[i] = new Car();
-        }
+    public List<Car> getCars() {
+        return cars;
     }
 
-    public void settingCars(String[] names) {
-        makeCars(names.length);
-        for (int i = 0; i < cars.length; i++) {
-            cars[i].setDriver(names[i]);
+    public void makeCars(String[] driverNames) {
+        for (String driver : driverNames) {
+            cars.add(new Car(driver));
         }
-    }
-
-    public int makeRandomNumber() {
-        Random random = new Random();
-        return random.nextInt(RANDOM_BOUNDARY);
     }
 
     public boolean isAccerate(int randomNumber) {
@@ -37,15 +29,15 @@ public class GameController {
         return false;
     }
 
-    public void accerateCar(int turn, int tryNumber){
-        for(int i = 0 ;i<tryNumber;i++){
-            cars[turn].accelerate(isAccerate(makeRandomNumber()));
+    public void accerateCar(Car car, int tryNumber) {
+        for (int i = 0; i < tryNumber; i++) {
+            car.accelerate(isAccerate(RandomGenerator.makeRandomValue(RANDOM_BOUNDARY)));
         }
     }
 
-    public void accerateCars(int tryNumber){
-        for(int i = 0;i<cars.length;i++){
-            accerateCar(i,tryNumber);
+    public void accerateCars(int tryNumber) {
+        for (Car car : cars) {
+            accerateCar(car, tryNumber);
         }
     }
 

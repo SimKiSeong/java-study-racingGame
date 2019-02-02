@@ -2,6 +2,8 @@ package com.econo.racingGame.view;
 
 import com.econo.racingGame.model.Car;
 
+import java.util.List;
+
 public class ResultView {
 
     private static final String BAR = "-";
@@ -9,13 +11,13 @@ public class ResultView {
     private static final String WINNER_FORM = ", ";
     private static final String WINNER_MENT = "가 최종 우승했습니다.";
 
-    public static void printResult(Car[] cars) {
-        for (int i = 0; i<cars.length;i++) {
-            System.out.println(resultString(cars[i]));
+    public static void printResult(List<Car> cars) {
+        for (Car car : cars) {
+            System.out.println(resultString(car));
         }
     }
 
-    public static String resultString(Car car) {
+    private static String resultString(Car car) {
         String resultString = car.getDriver() + RESULT_FORM;
         for (int i = 0; i < car.getMoveDistance(); i++) {
             resultString = resultString.concat(BAR);
@@ -23,7 +25,7 @@ public class ResultView {
         return resultString;
     }
 
-    private void printWinner(String[] winner) {
+    public static void printWinner(String[] winner) {
         System.out.print(winner[0]);
         for (int i = 1; i < winner.length; i++) {
             System.out.print(WINNER_FORM + winner[i]);
