@@ -12,7 +12,7 @@ public class Car {
         this.moveDistance = 0;
     }
 
-    public Car(String driver,int moveDistance) {
+    public Car(String driver, int moveDistance) {
         this.driver = driver;
         this.moveDistance = moveDistance;
     }
@@ -33,8 +33,8 @@ public class Car {
         this.moveDistance = moveDistance;
     }
 
-    public void accelerate(boolean goFoward) {
-        if (goFoward) {
+    public void accelerate(boolean isFoward) {
+        if (isFoward) {
             moveDistance = moveDistance + ONCE_DISTANCE;
         }
     }
